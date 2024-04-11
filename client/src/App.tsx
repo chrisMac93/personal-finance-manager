@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import TransactionForm from './components/TransactionForm';
+import TransactionsList from './components/TransactionsList';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [transactions, setTransactions] = useState<any[]>([]);
+
+    const addTransaction = async (transaction: any) => {
+      const response = await fetch('http://localhost:3001/transactions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(transaction),
+      });
+      const savedTransaction = await response.json();
+      setTransactions([...transactions, savedTransaction]);
+    };
+
+    return (
+        <div>
+            <h1>Transaction Manager</h1>
+            <TransactionForm onSubmit={addTransaction} />
+            <TransactionsList transactions={transactions} />
+        </div>
+    );
+};
 
 export default App;
+
