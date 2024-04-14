@@ -1,14 +1,11 @@
 import React from "react";
-import InfoBar from "../components/InfoBar";
+import BalanceCard from "../components/BalanceCard";
 
 const DashboardPage = () => {
     // Dashboard content goes here
     return (
         <>
-            <InfoBar />
-            <div className="flex">
-                <p>Dashboard</p>
-            </div>
+            <BalanceCard />
         </>
     );
 };

@@ -7,7 +7,9 @@ module.exports = {
         space: {
           dark: "#202430", // Dark blue background
           light: "#1b263b", // Lighter blue for card backgrounds or surfaces
-          accent: "#e43f5a", // Vibrant red-orange for buttons, highlights, etc.
+          accent1: "#D25E00", // Vibrant red-orange for buttons, highlights, etc.
+          accent2: "CF0000",
+          accent3: "FcFB00", 
         },
       },
       fontFamily: {
